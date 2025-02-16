@@ -1,0 +1,512 @@
+---
+title: "Statistical Methods Exam 1 Study Guide"
+author: "Cali Kennedy"
+date: "2025-02-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "/Users/calik/stat_25/")
+library(tidyverse)
+```
+
+# CHAP 1
+
+## SECTION 1.1: POPULATIONS&PROCESSES
+
+### Overview: population, sample. Census, variables, type of data, numerical summary, statistic, parameter, process of statistics, type of statistics, type of studies, sampling methods
+
+-   **Data:** a collection of facts
+
+-   **Population:** a group of interest
+
+-   **Census:** when we collect data on an entire population - very hard
+
+-   **Sample:** when we collect data for a subset of a population
+
+-   *Our objective is to use the data in the sample to reach conclusions about the population as a whole.*
+
+-   *Examples:*
+
+    -   *Population Example: All students at a university.*
+
+    -   *Sample Example: 100 students surveyed from the university.*
+
+<hr style="border: 2px solid pink;">
+
+### Variables
+
+In a sample we have observations, individual data points that consist of **variables**, or quantities/characteristics of interest.
+
+-   **Categorical** variables take values from a *finite number of possibilities*.
+
+-   **Quantitative** variables, however, take *numerical* values
+
+-   **Univariate** data records the value of only one variable for each observation.
+
+-   **Multivariate** data records the value of multiple variables for each observation.
+
+-   **Bivariate** data is a special case of multivariate data; there are two variables quantified.
+
+#### Example: Identify variable, type of variables, type of data for the following study.
+
+***A. A company wants to know the brand of laptop and cellphone owned by students. They also want to know the time a student takes to study and time they stream videos per week. The company interviews 20 students at a college.***
+
+-   **Brand of laptop**: *Categorical (Qualitative)* – Represents categories without numerical meaning.
+-   **Brand of cellphone**: *Categorical (Qualitative)* – Represents categories without numerical meaning.
+-   **Time spent studying per week**: *Continuous (Quantitative)* – Can take any value within a range (e.g., 5.5 hours).
+-   **Time spent streaming videos per week**: *Continuous (Quantitative)* – Can take any value within a range.
+-   **Multivariate Data, categorical and quantitative.**
+
+***B. Government wants to know number of children, family income, marital status in a family in the country.***
+
+-   **Number of Children:** *Continuous(Quantitative) - can take any value within a range*
+
+-   **Family income:** *Continuous (Quantitative) - can take any value within a range*
+
+-   **Marital status:** *Categorical (Qualitative) - represents categories without numerical meaning*
+
+-   **Multivariate Data, categorical and quantitative.**
+
+***C. A car company want to know car mileage of car owned by adults in Conway. They survey 100 random adults in Conway.***
+
+-   **Mileage of car:** *Quantitative (Continuous) - can take any value within a range.*
+
+-   **Uni-variate**
+
+<hr style="border: 2px solid pink;">
+
+### Statistics/Parameters
+
+-   A **numerical summary** is a measure that try to describe *as much as possible* about the data set in *as few numbers as possible* (example, mean, median, mode, variance, proportion, percentage).
+
+-   A **statistic** is a numerical summary of *sample data.*
+
+-   A **parameter** is a numerical summary of *population data* (unknown. Entity we want to estimate).
+
+#### Example: Determine the numerical summaries and their statistics and parameter for the following study.
+
+***A. A company wants to know the brand of laptop and cellphone owned by students. They also want to know the time a student takes to study and time they stream videos per week. The company interviews 20 students at a college.***
+
+-   **Numerical Summaries**:
+
+    -   Mean time spent studying, mean time spent streaming videos.
+
+    -   Mode for brand of laptops and cellphones.
+
+-   **Statistic**:
+
+    -   The mean time spent studying and streaming for the 20 students surveyed is a **statistic** because it is derived from the **sample**.
+
+-   **Parameter**:
+
+    -   The mean time spent studying and streaming for all students at the college would be a **parameter** because it refers to the entire **population** of students at the college (which is unknown).
+
+***B. Government wants to know number of children, family income, marital status in a family in the country. They survey random 1000 family in the country***
+
+-   **Numerical Summaries**:
+
+    -   **Mean number of children per family**.
+
+    -   **Mean family income**.
+
+    -   **Proportion of families by marital status** (e.g., percentage of married, divorced, or single households).
+
+-   **Statistic**:
+
+    -   The values calculated from the **1000 surveyed families** (such as the average number of children and average income) are **statistics** because they are derived from the **sample** of 1000 families.
+
+-   **Parameter**:
+
+    -   The **true average number of children, average income, and marital status for all families in the country** are **parameters** because they refer to the entire **population** of families in the country (which is unknown and what the government aims to estimate).
+
+<hr style="border: 2px solid pink;">
+
+### The Process of Statistics
+
+1.  **Identify the research objective.** A researcher must determine the question(s) he or she wants answered. The question(s) must clearly identify the population that is to be studied.
+
+2.  **Collect the data needed to answer the question(s) posed in (1).** Conducting research on an entire population is often difficult and expensive, so we typically look at a *sample*. This step is vital to the statistical process, because if the data are not collected correctly, the conclusions drawn are meaningless. Do not overlook the importance of appropriate data collection.
+
+3.  **Describe the data.** Descriptive statistics allow the researcher to obtain an overview of the data and can help determine the type of statistical methods the researcher should use.
+
+4.  **Perform inference.** Apply the appropriate techniques to extend the results obtained from the sample to the population and report a level of reliability of the results.
+
+-   Modern statistics depends heavily on probability theory. **Probability** is the field of mathematics that describes the behavior of objects in the presence of uncertainty (which we refer to as randomness).
+
+-   **Descriptive statistics** consist of organizing and summarizing data. Descriptive statistics describe data through numerical summaries, tables, and graphs.
+
+-   **Inferential statistics** uses methods that take results from a sample, extends them to the population, and measures the reliability of the result.
+
+-   How we define a population depends heavily on our problem.
+
+-   In **enumerative** studies, the population is a fixed, finite, tangible group that presently exists.
+
+-   In **analytic** studies the population may not presently exist
+
+<hr style="border: 2px solid pink;">
+
+### Sampling Methods
+
+Statistics depends crucially on how data is collected in surveystyle, observational studies. If data is collected poorly, the results of analysis cannot be trusted.
+
+1.  **Simple Random Sample (SRS)**
+    -   each member of the population of interest is eligible to be randomly selected to be included in the sample.
+2.  **Stratified Sample**
+    -   the population is divided into observable data. A SRS is then selected from individuals in each sample.
+3.  **Convenience sampling**
+    -   bad
+    -   Convenience sampling selects individuals in a way that is not completely random (in the sense that not all individuals from the population are equally likely to be selected, and the procedure is not intentionally stratified).
+
+#### Example: Identify the sampling method used. Is it representative of the population?
+
+***A. To survey opinions on a proposed new water line, a research firm randomly draws the addresses of 200 homeowners from a public list of all homeowners.***
+
+Simple Random Sampling. Good chance of being representative of the population.
+
+***B. You work for a small company of 1,000 employees and want to find out how they are saving for retirement. You decide to separate the employees by age group and randomly select 20 people from each age group.***
+
+Stratified SRS - split them up into groups and then randomly select individuals. Is representative.
+
+***C. To estimate the average weight of all men at a college, we survey 25 players from the football team after a game***
+
+Choosing the sample while at the ballgame is a convenience sample. The sample is not representative, as the weight of football players does not usually match the weight of the population.
+
+<hr style="border: 3px solid pink;">
+
+## SECTION 1.2: PICTORIAL AND TABULAR METHODS IN DESCRIPTIVE STATISTICS
+
+### Overview: distribution, frequency, relative frequency, barplot, histogram, ViolinPlot
+
+### Distribution
+
+A distribution describes what values a variable takes and how frequently it takes them.
+
+-   This section describes techniques for visualizing distributions of univariate data.
+
+-   Visualization is an important first step in a statistical project, as it reveals patterns that are difficult to describe using numbers only, and could suggest what statistical procedures are appropriate
+
+<hr style="border: 2px solid pink;">
+
+### Variables 2.0
+
+-   A quantitative variable is **discrete** if its possible values are *countable*.
+
+-   It is **continuous** if possible values consist of *entire intervals of the real number line* (which could be the whole line, in principle).
+
+-   The **frequency** the value of a variable occurs is the *number of times that value was seen* in a dataset.
+
+-   The **relative frequency** is the frequency a value/bin occured divided by the number of data points.
+
+    -   relative frequency = (frequency / sum of all frequencies)
+
+<hr style="border: 2px solid pink;">
+
+### Frequency
+
+-   For **discrete** variables it’s *reasonable* to list the frequency of each observed value, but for continuous variables this is not reasonable.
+
+-   Instead, for **continuous** variables, we list the frequency of a **bin**, which is a *range in which a datapoint could be*. We would then count how many data points fell within that range.
+
+-   A **frequency distribution** is a tabulation of frequencies or relative frequencies
+
+<hr style="border: 2px solid pink;">
+
+#### Example: Frequency Distribution of Accident Data
+
+*The following categories for type of physical activity involved when an industrial accident occurred appeared in the article “Finding Occupational Accident Patterns in the Extractive Industry Using a Systematic Data Mining Approach” (Reliability Engr. and System Safety, 2012: 108–122):*
+
+*A. Working with handheld tools*
+
+*B. Movement*
+
+*C. Carrying by hand*
+
+*D. Handling of objects*
+
+*E. Operating a machine*
+
+*F. Others*
+
+```{r}
+accidents_df <- read_csv(file = "ex01-29.csv")
+accidents_df
+
+# Frequency Distribution
+accidents_df %>%
+  count(Accidents, name = "frequency")
+```
+
+<hr style="border: 2px solid pink;">
+
+#### Example: Relative Frequency Distribution of Accident Data
+
+```{r}
+
+# Relative Frequency 
+accidents_df %>%
+  count(Accidents, name = "frequency") %>%
+  mutate(rel_freq = frequency/sum(frequency))
+```
+
+<hr style="border: 2px solid pink;">
+
+#### Example: Mutate
+
+```{r}
+# Example of Mutate
+#Mutate: Create a new variable in the dataset
+
+accidents_df %>%
+  mutate(new_var = 1:100,
+         another_var = new_var/24*17)
+```
+
+<hr style="border: 2px solid pink;">
+
+### Frequency for Continuous Data
+
+When working with continuous data we need to **construct bins** when creating a frequency distribution, and list the frequency each bin occurs. **How do we do this?**
+
+1.  Decide on the number of bins. There are rules of thumb for doing this, such as choosing approximately n\^(½) bins. Actually, n\^(⅕) may work better.
+
+2.  Divide the segment of the number line where your data lies into that many equal-length bins.
+
+3.  Depending on where each datapoint falls, assign it to a bin. If it falls on a border between bins, assign it to the bin on the right. (In other words, bins are right-inclusive.)
+
+4.  Construct a frequency distribution for the bins.
+
+<hr style="border: 2px solid pink;">
+
+### Bar Graph/Plot
+
+A bar plot is a method for visualizing **categorical** (sometimes referred to as qualitative) data.
+
+To construct a bar plot:
+
+1.  List each possible value of the variable and how frequently each value is taken.
+
+2.  Draw a horizontal line and along that axis mark each possible value of the variable. The vertical axis will correspond to different possible frequencies.
+
+3.  Draw a bar for each category extending to the category’s observed frequency
+
+#### Example: Bar Graph
+
+```{r}
+accidents_df %>%
+  ggplot(mapping = aes(x = Accidents)) +
+  geom_bar(color = "black", fill = "coral") +
+  labs(y = "Frequency")
+```
+
+<hr style="border: 2px solid pink;">
+
+### Histogram
+
+Once we have a frequency distribution, we can construct a histogram, a plot for visualizing the distribution of **quantitative** data.
+
+Do the following:
+
+1.  Draw a number line and mark the location of the bins. For discrete data, center the bins on the corresponding value.
+
+2.   For each class, draw a bar extending from the number line to either the frequency or relative frequency of the number/bin. Do this for each bin
+
+#### Example: Histogram shower-flow rate data
+
+```{r}
+rate_df <- read_csv("ex01-14.csv")
+rate_df
+rate_v <- rate_df %>% pull(Rate)
+
+rate_df %>%
+  ggplot(mapping = aes(x = Rate)) +
+  geom_histogram(color = "black", fill = "blue", binwidth = 1)
+```
+
+<hr style="border: 2px solid pink;">
+
+#### Example: Violin Plot
+
+```{r}
+rate_df %>%
+  ggplot(mapping = aes(x = Rate, y = 0)) +
+  geom_violin(color = "black", fill = "blue")
+```
+
+<hr style="border: 2px solid pink;">
+
+### Reports on Graphs
+
+#### 1. **Unimodal, Bimodal, and Multimodal Distributions**:
+
+-   **Unimodal**: The graph has **one clear peak**.\
+    *Example*: A bell curve showing student test scores centered around a single average.
+
+-   **Bimodal**: The graph has **two distinct peaks**.\
+    *Example*: A distribution of exam scores where two groups performed very differently.
+
+-   **Multimodal**: The graph has **more than two peaks**.\
+    *Example*: A dataset of people’s heights that shows peaks for children, teens, and adults.
+
+-   **Uniform Distribution**: The graph has **no peaks**, and all values are equally likely.\
+    *Example*: Rolling a fair die where each outcome (1 through 6) has an equal chance.
+
+#### 2. **Skewness**:
+
+-   **Positively Skewed**: The graph’s tail extends to the **right** (towards higher values).\
+    *Example*: Income distributions where most people earn lower wages, but a few earn extremely high salaries.
+
+-   **Negatively Skewed**: The graph’s tail extends to the **left** (towards lower values).\
+    *Example*: Scores on an easy test where most students scored high, but a few scored low.
+
+-   **Symmetric**: The graph is **evenly distributed** on both sides of the center.\
+    *Example*: Heights of adult men in a population often form a symmetric bell curve.
+
+#### 3. **Outliers**:
+
+-   **Outliers** are **data points that are far away** from the rest of the data.\
+    *Example*: In a graph of students’ heights, an outlier could be a single student who is significantly taller or shorter than the rest.
+
+-   **How to Spot**: Look for points that are distant from the main cluster of data in a scatter plot or box plot.
+
+#### 4. **Spread of the Data**:
+
+-   **Spread** refers to **how much the data values vary** from each other.
+
+-   **Measures of Spread**:
+
+    -   **Range**: The difference between the maximum and minimum values.
+
+    -   **Variance**: Measures how far each value is from the mean.
+
+    -   **Standard Deviation**: The average distance of data points from the mean.
+
+-   *Example*: A graph with data points tightly clustered around the mean has **low spread**, while one with data points far apart has **high spread**.
+
+<hr style="border: 2px solid pink;">
+
+### Mean
+
+```{r}
+# Mean
+
+# Dataframe
+rate_df %>%
+  summarise(mean_rate = mean(Rate))
+
+
+# array
+rate_v %>% mean()
+```
+
+<hr style="border: 2px solid pink;">
+
+### Trimmed Mean
+
+$\bar{x}_{tr(10)}$
+
+alpha = 10/100 = 0.1
+
+```{r}
+#Trimmed mean - array
+rate_v %>% mean(trim = 0.1)
+  
+
+#Trimmed mean - dataframe
+rate_df %>%
+  summarise(trim_mean_10 = mean(Rate, trim = 0.1))
+```
+
+<hr style="border: 2px solid pink;">
+
+### Mode
+
+```{r}
+# Mode - Use dataframe
+rate_df %>%
+  count(Rate, name = "freq") %>%
+  arrange(freq) # ascending order
+
+rate_df %>%
+  count(Rate, name = "freq") %>%
+  arrange(desc(freq)) # descending order
+```
+
+<hr style="border: 2px solid pink;">
+
+### Median
+
+```{r}
+# Median
+
+# Dataframe
+rate_df %>%
+  summarise(median_rate = median(Rate))
+
+
+# array
+rate_v %>% median()
+```
+
+<hr style="border: 2px solid pink;">
+
+### Percentile
+
+```{r}
+# 90th percentile 
+rate_v %>%
+  quantile(probs = 0.90)
+
+# Q1
+rate_v %>%
+  quantile(probs = 0.25)
+
+# Q3
+rate_v %>%
+  quantile(probs = 0.75)
+```
+
+<hr style="border: 2px solid pink;">
+
+### Five-Number-Summary
+
+```{r}
+# Five Number summary
+
+# Minimum
+rate_v %>% min()
+
+# Q1
+rate_v %>%
+  quantile(probs = 0.25)
+
+#Median
+rate_v %>% median()
+
+# Q3
+rate_v %>%
+  quantile(probs = 0.75)
+
+# Max
+rate_v %>% max()
+```
+
+<hr style="border: 2px solid pink;">
+
+### Box-Plot
+
+```{r}
+# Boxplot - dataframe
+rate_df %>%
+  ggplot(mapping = aes(x = Rate)) +
+  geom_boxplot(color = "black", fill = "pink")
+
+# Boxplot - array
+ggplot(mapping = aes(x = rate_v)) +
+  geom_boxplot(color = "black", fill = "green")
+```
+
+Boxplot suggests one outlier and that the shape of the distribution of shower rate
+
+<hr style="border: 2px solid pink;">
