@@ -11,9 +11,9 @@ knitr::opts_knit$set(root.dir = "/Users/calik/stat_25/")
 library(tidyverse)
 ```
 
-# CHAP 1
+# **CHAP 1**
 
-## SECTION 1.1: POPULATIONS&PROCESSES
+## **SECTION 1.1: POPULATIONS&PROCESSES**
 
 ### Overview: population, sample. Census, variables, type of data, numerical summary, statistic, parameter, process of statistics, type of statistics, type of studies, sampling methods
 
@@ -35,7 +35,7 @@ library(tidyverse)
 
 <hr style="border: 2px solid pink;">
 
-### Variables
+### **Variables**
 
 In a sample we have observations, individual data points that consist of **variables**, or quantities/characteristics of interest.
 
@@ -77,7 +77,7 @@ In a sample we have observations, individual data points that consist of **varia
 
 <hr style="border: 2px solid pink;">
 
-### Statistics/Parameters
+### **Statistics/Parameters**
 
 -   A **numerical summary** is a measure that try to describe *as much as possible* about the data set in *as few numbers as possible* (example, mean, median, mode, variance, proportion, percentage).
 
@@ -123,7 +123,7 @@ In a sample we have observations, individual data points that consist of **varia
 
 <hr style="border: 2px solid pink;">
 
-### The Process of Statistics
+### **The Process of Statistics**
 
 1.  **Identify the research objective.** A researcher must determine the question(s) he or she wants answered. The question(s) must clearly identify the population that is to be studied.
 
@@ -147,7 +147,7 @@ In a sample we have observations, individual data points that consist of **varia
 
 <hr style="border: 2px solid pink;">
 
-### Sampling Methods
+### **Sampling Methods**
 
 Statistics depends crucially on how data is collected in surveystyle, observational studies. If data is collected poorly, the results of analysis cannot be trusted.
 
@@ -175,11 +175,11 @@ Choosing the sample while at the ballgame is a convenience sample. The sample is
 
 <hr style="border: 3px solid pink;">
 
-## SECTION 1.2: PICTORIAL AND TABULAR METHODS IN DESCRIPTIVE STATISTICS
+## **SECTION 1.2: PICTORIAL AND TABULAR METHODS IN DESCRIPTIVE STATISTICS**
 
 ### Overview: distribution, frequency, relative frequency, barplot, histogram, ViolinPlot
 
-### Distribution
+### **Distribution**
 
 A distribution describes what values a variable takes and how frequently it takes them.
 
@@ -189,7 +189,7 @@ A distribution describes what values a variable takes and how frequently it take
 
 <hr style="border: 2px solid pink;">
 
-### Variables 2.0
+### **Variables 2.0**
 
 -   A quantitative variable is **discrete** if its possible values are *countable*.
 
@@ -203,7 +203,7 @@ A distribution describes what values a variable takes and how frequently it take
 
 <hr style="border: 2px solid pink;">
 
-### Frequency
+### **Frequency**
 
 -   For **discrete** variables it’s *reasonable* to list the frequency of each observed value, but for continuous variables this is not reasonable.
 
@@ -279,7 +279,7 @@ When working with continuous data we need to **construct bins** when creating a 
 
 <hr style="border: 2px solid pink;">
 
-### Bar Graph/Plot
+### **Bar Graph/Plot**
 
 A bar plot is a method for visualizing **categorical** (sometimes referred to as qualitative) data.
 
@@ -302,7 +302,7 @@ accidents_df %>%
 
 <hr style="border: 2px solid pink;">
 
-### Histogram
+### **Histogram**
 
 Once we have a frequency distribution, we can construct a histogram, a plot for visualizing the distribution of **quantitative** data.
 
@@ -338,7 +338,7 @@ rate_df %>%
 
 <hr style="border: 2px solid pink;">
 
-### Reports on Graphs
+### **Reports on Graphs**
 
 #### 1. **Unimodal, Bimodal, and Multimodal Distributions**:
 
@@ -523,11 +523,11 @@ alpha = 10/100 = 0.1
 
 <hr style="border: 2px solid pink;">
 
-## SECTION 1.3: MEASURES OF VARIABILITY
+## **SECTION 1.3: MEASURES OF VARIABILITY**
 
 ### Overview: range, sample variance, IQR
 
-### Measure of Spread
+### **Measure of Spread**
 
 #### **1. Range**:
 
@@ -614,9 +614,7 @@ alpha = 10/100 = 0.1
 
 \$\$\\\\text{IQR} = Q_3 - Q_1\$\$
 
-Where:
-- \$Q_1\$ = First quartile (25th percentile)
-- \$Q_3\$ = Third quartile (75th percentile)
+Where: - \$Q_1\$ = First quartile (25th percentile) - \$Q_3\$ = Third quartile (75th percentile)
 
 ### Example: Measures of Variability
 
@@ -649,16 +647,548 @@ rate_df %>%
 rate_v %>% IQR()
 ```
 
+<hr style="border: 4px solid pink;">
+
 # CHAP 2
 
-## SECTION 2.1: SAMPLE SPACES AND EVENTS
+### Overview Sample spaces and events, axioms, interpretations, properties of probability, counting techniques, conditional probability, independence
 
-### Overview: Sample spaces and events, axioms, interpretations, properties of probability, counting techniques, conditional probability, independence
+<hr style="border: 2px solid pink;">
 
-SECTION 2.2 AXIOMS, INTERPRETATIONS, AND PROPERTIES OF PROBABILITY
+## **SECTION 2.1: SAMPLE SPACES AND EVENTS**
 
-SECTION 2.3 COUNTIN TECHNIQUES
+### **Probability and Experiment**
 
-SECTOIN 2.4 CONDITIONAL PROBABILITY
+-   **Probability** is the mathematical study of randomness and uncertain outcomes
 
-SECTION 2.4 INDEPENDENCE
+-   An **experiment** is an activity or process with an uncertain outcome. Example experiments include:
+
+    -   Flipping a coin
+
+    -   Rolling a six-sided die
+
+    -   Rolling two six-sided dice
+
+    -   The time in the morning you wake up
+
+    -   Obtaining blood types from a group of individuals
+
+<hr style="border: 2px solid pink;">
+
+### **Sample Space and Event**
+
+-   **Outcomes** are the basic results of an experiments.
+
+-   **Sample space** is the collection of all possible outcomes of an experiment.
+
+    -   denoted by S.
+
+-   An event is a collection of one or more outcomes of an experiment.
+
+    -   denoted by E.
+
+-   The **empty set** or null event, Ø, is a set with no members; it can be thought of as the event that nothing happens
+
+#### Example
+
+***Find sample space and give example of an event for the following, for the experiment in which a) two coins are tossed.***
+
+-   **sample space:** S = HH. HT. TH, TT
+
+-   **example of an event:** (getting at least one head) E = HH,HT,TH
+
+***b) we record the number that appears in a roll of a six sided fair dice.***
+
+-   **sample space:** S = 1,2,3,4,5,6
+
+-   **example of an event:** (Rolling an even number) E = 2,4,6
+
+***c) the number of pumps in use at a single six-pump gas station is observed.***
+
+-   **sample space:** the number of pumps can range from 0-6, S = 0,1,2,3,4,5,6
+
+-   **example of an event:** (Exactly 3 pumps are in use) E = 3
+
+<hr style="border: 2px solid pink;">
+
+### **Complement, Union, Intersection, Disjoint**
+
+-   **Complement (A')**: All outcomes in the sample space (S) that are **not in A**.
+
+<!-- -->
+
+-   **Union (A ∪ B)**: All outcomes in **A or B** (or both). (Everything in A and B individually minus things that are in both A and B)
+
+-   **Intersection (A ∩ B)**: All outcomes in **both A and B**.
+
+-   **Disjoint Sets**: Two sets with **no common elements**; their intersection is the **empty set (Ø)**.
+
+#### Example - Rolling a Six Sided Die
+
+-   ***Sample Space (S)**: `{1, 2, 3, 4, 5, 6}`*
+
+    -   ***A = {1, 3, 5}** (odd numbers)*
+
+    -   ***B = {2, 4, 6}** (even numbers)*
+
+    -   ***C = {2, 3}***
+
+***a) A' (Complement of A):***
+
+All outcomes **not in A**:
+
+A' = 2 , 4 , 6
+
+***b)A ∪ B (Union of A and B)**:*
+
+All unique outcomes from both A and B:
+
+A ∪ B = 1 , 2 , 3 , 4 , 5 , 6
+
+(*This covers the entire sample space!*)
+
+***c) A ∪ C (Union of A and C):***
+
+All unique outcomes from A and C:
+
+A ∪ C = 1 , 2 , 3 , 5
+
+***d) A ∩ B (Intersection of A and B):***
+
+Common outcomes between A and B:
+
+A ∩ B = Ø
+
+(*No common elements, so they are disjoint sets.*)
+
+***e) A ∩ C (Intersection of A and C):***
+
+Common outcomes between A and C:
+
+A ∩ C = 3
+
+#### Example **-** Gas station with 6 pumps
+
+-   ***Sample Space (S)**: `{0, 1, 2, 3, 4, 5, 6}`*
+
+-   ***A = {0, 1, 2, 3, 4}***
+
+-   ***B = {3, 4, 5, 6}***
+
+-   ***C = {1, 3, 5}***
+
+-   ***D = {6}***
+
+Let's find the requested events:
+
+***a) A' (Complement of A):***
+
+All outcomes not in A:
+
+A' = 5 , 6
+
+***b) A ∪ B (Union of A and B):***
+
+All unique outcomes from A and B:
+
+A ∪ B ***=*** 0 , 1 , 2 , 3 , 4 , 5 , 6
+
+***c) A ∪ C (Union of A and C):***
+
+All unique outcomes from A and C:
+
+A ∪ C ***=*** 0 , 1 , 2 , 3 , 4 , 5
+
+***d) A ∩ B (Intersection of A and B):***
+
+Common outcomes between A and B:
+
+A ∩ B = 3 , 4
+
+***e) A ∩ C (Intersection of A and C):***
+
+Common outcomes between A and C:
+
+A ∩ C = 1 , 3
+
+***f) A ∩ D (Intersection of A and D):***
+
+Common outcomes between A and D:
+
+A ∩ D = Ø
+
+(*No common elements.*)
+
+***g) (A ∩ C)' (Complement of A ∩ C):***
+
+First, find **A ∩ C** (which is `{1, 3}`), then take the complement:
+
+(A ∩ C)′=0,2,4,5,6
+
+(*All outcomes not in `{1, 3}`.*)
+
+<hr style="border: 2px solid pink;">
+
+## **SECTION 2.2 AXIOMS, INTERPRETATIONS, AND PROPERTIES OF PROBABILITY**
+
+### **Probability**
+
+#### What does 0 ≤ P(A) ≤ 1 mean?
+
+-   **Probability** is a measure of how likely an event is to happen.
+
+-   The value of probability is **always between 0 and 1**, inclusive, meaning: 0 ≤ P(A) ≤ 1
+
+#### Interpretation:
+
+-   P(A) = 0\
+    The event **cannot happen** (impossible event).\
+    *Example*: Rolling a 7 on a standard six-sided die is impossible, so P(A) = 0
+
+-   P(A) = 1\
+    The event is **certain** to happen.\
+    *Example*: The probability that a single die roll results in a number between 1 and 6 is P(A) =1 because it's guaranteed.
+
+-   0 \< P(A) \< 1\
+    The event is **possible but not guaranteed**.\
+    *Example*: The probability of flipping heads on a coin is P(A) = 0.5 — it might or might not happen, but it’s definitely possible.
+
+#### Why is this important?
+
+-   **Probabilities are never negative**.
+
+-   **Probabilities are never greater than 1**.
+
+-   All probabilities must lie within this range to be mathematically valid.
+
+#### Example:
+
+If the probability of rain tomorrow is 0.7, it means:
+
+-   There is a 70% chance of rain.
+
+-   It is **more likely** to rain than not to rain, but it's not guaranteed.
+
+-   It’s within the valid probability range.
+
+#### R Example
+
+Among a certain population of men, 30% are smokers, 40% are obese, and 25% are both smokers and obese. Suppose we select a man at random from this population, and we let A be the event that he is a smoker and B be the event that he is obese. What is the probability that the selected man is either a smoker or obese?
+
+`{r} #P(A or B) = P(S or O)} 0.40 + 0.3 - 0.25`
+
+Let rolling two fair dice be a random experiment. Let M be the event that sum of two number is greater or equal to 10. Let F be the event that both numbers are the same. List event M and F. What is the probability of event M occurring? event F occurring? the intersection of event M and F? the union of event M and F?
+
+```{r}
+# P(M) 
+6/36  
+# P(F) 
+6/36  
+# P(M and F) 
+2/36  
+# P(M or F) 
+1/6 + 1/6 - 2/36
+```
+
+### **Probability Axioms**
+
+A **probability measure** P is a function that assigns a probability to each event, following these rules:
+
+1.  **Non-negativity**: P(A) ≥ 0 for any event A.
+
+2.  **Normalization**: P(S)=1, where S is the sample space.
+
+3.  **Additivity**: If Aand B are disjoint (no elements in common), P(A∪B) = P(A) + P(B)
+
+#### Example - Rolling a Six Sided Die
+
+-   ***Sample Space** S: {1,2,3,4,5,6}*
+
+-   ***Given**:*
+
+    -   *A = {1, 3, 5} (odd numbers),*
+
+    -   *B= {2, 4, 6} (even numbers),*
+
+    -   *C = {2, 3}.*
+
+***a) P(A)***
+
+Since A = {1, 3, 5} contains 3/6 outcomes
+
+```{r}
+# P(A)
+3/6
+```
+
+***b) P(A') (Complement of A)***
+
+A' is all outcomes not in A. A' = {2,4,6}. Thus:
+
+```{r}
+#P(A') = 1 - P(A)
+1 - 0.5
+```
+
+## SECTION 2.3 COUNTING TECHNIQUES
+
+### Product Rule (Multiplication Rule of Counting)
+
+If there are $n_1$ ways to make choice 1, $n_2$ ways to make choice 2, and so on, the total number of combinations is: $$n_1 \times n_2 \times n_3 \times \cdots \times n_k$$
+
+#### Example: Bob’s Burgers
+
+-   **Bread options**: White, Rye, Sourdough → 3 ways.
+-   **Cheese options**: With or without cheese → 2 ways.
+-   **Total burgers**: $3 \times 2 = 6$ possible burgers.
+
+#### Example: Deluxe Deli Sandwiches
+
+-   **Bread options**: 4 ways.
+-   **Meat options**: 5 ways.
+-   **Cheese options**: 6 ways.
+-   **Lettuce, tomatoes, bacon, mayonnaise, mustard**: 2 ways each.
+-   **Total sandwiches**: $$4 \times 5 \times 6 \times 2 \times 2 \times 2 \times 2 \times 2 = 7680$$
+
+#### Example 9: License Plates
+
+-   **First 3 characters**: Letters (A-Z) → 26 ways each.
+-   **Last 3 characters**: Digits (0-9) → 10 ways each.
+-   **Total license plates**: $$26^3 \times 10^3 = 17,576,000$$
+
+------------------------------------------------------------------------
+
+### Factorial ($n!$)
+
+#### Definition
+
+The product of all positive integers up to $n$. $$n! = n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1$$
+
+#### Example
+
+$5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.
+
+------------------------------------------------------------------------
+
+### Combinations
+
+#### Definition
+
+Choosing $r$ objects from $n$ distinct objects **without regard to order**. $$C(n, r) = {n!}/{r!(n-r)!}$$
+
+------------------------------------------------------------------------
+
+### Example: Electing Officers
+
+-   **30 trustees** need to elect 4 officers.
+-   **Permutation: selecting items with regard to order**.
+-   **Permutation formula**: $$P(n, r) = {n!}/{(n-r)!}$$
+-   **Solution**: $$P(30, 4) = 30 \times 29 \times 28 \times 27 = 657,720$$
+
+### Example: Electing Committee Members
+
+-   **Combination formula**: $$C(30, 4) = \\frac{30!}{4!(30-4)!} = 27,405$$
+
+------------------------------------------------------------------------
+
+### Example: Forming a Student Committee
+
+-   Choose 3 females from 5: $C(5, 3) = 10$
+-   Choose 2 males from 4: $C(4, 2) = 6$
+-   **Total committees**: $10 \times 6 = 60$.
+
+------------------------------------------------------------------------
+
+### Example: Non-Feuding Committee
+
+-   Total committees without restriction: $60$
+-   Forbidden committees: $C(2, 2) \times C(5, 3) = 10$
+-   **Valid committees**: $60 - 10 = 50$.
+
+## SECTION 2.4 CONDITIONAL PROBABILITY
+
+-   **Formula**: $$P(A|B) = \frac{P(A \cap B)}{P(B)}$$ Where:
+    -   $P(A|B)$: Probability of $A$ given $B$.
+    -   $P(A \cap B)$: Probability of both $A$ and $B$ occurring.
+    -   $P(B)$: Probability of $B$.
+
+------------------------------------------------------------------------
+
+### Example: Camera Purchase Problem
+
+#### Problem Setup
+
+-   $P(A) = 0.6$ (60% of buyers purchase a memory card).
+-   $P(B) = 0.4$ (40% of buyers purchase an extra battery).
+-   $P(A \cap B) = 0.3$ (30% purchase both a memory card and an extra battery).
+
+------------------------------------------------------------------------
+
+#### Part (a) $P(A | B)$: Probability of a memory card given a battery was purchased
+
+-   Using the formula: $$P(A|B) = \frac{P(A \cap B)}{P(B)}$$
+-   Substitute the values: $$P(A|B) = \frac{0.3}{0.4} = 0.75$$
+-   **Interpretation**: If a buyer purchased a battery, there is a 75% chance they also purchased a memory card.
+
+------------------------------------------------------------------------
+
+#### Part (b) $P(B | A)$: Probability of a battery given a memory card was purchased
+
+-   Using the formula: $$P(B|A) = \frac{P(A \cap B)}{P(A)}$$
+-   Substitute the values: $$P(B|A) = \frac{0.3}{0.6} = 0.5$$
+-   **Interpretation**: If a buyer purchased a memory card, there is a 50% chance they also purchased a battery.
+
+------------------------------------------------------------------------
+
+### Example: Test Results Contingency Table
+
+|                | Received A (A) | Did Not Receive A (A') |
+|----------------|----------------|------------------------|
+| Reviewed (R)   | 14             | 6                      |
+| Did not Review | 8              | 22                     |
+
+-   **Total Students**: 50
+
+------------------------------------------------------------------------
+
+#### Part (a) $P(A)$: Probability of receiving an A
+
+-   Count all students who received an A: $$14 + 8 = 22$$
+-   Probability: $$P(A) = \frac{22}{50} = 0.44$$
+
+------------------------------------------------------------------------
+
+#### Part (b) $P(R)$: Probability of reviewing before the test
+
+-   Count all students who reviewed: $$14 + 6 = 20$$
+-   Probability: $$P(R) = \frac{20}{50} = 0.4$$
+
+------------------------------------------------------------------------
+
+#### Part (c) $P(A \cup R)$: Probability of receiving an A or reviewing
+
+-   Use the formula: $$P(A \cup R) = P(A) + P(R) - P(A \cap R)$$
+-   Find $P(A \cap R)$ (both A and reviewed): $$P(A \cap R) = \frac{14}{50} = 0.28$$
+-   Substitute values: $$P(A \cup R) = 0.44 + 0.4 - 0.28 = 0.56$$
+-   **Interpretation**: 56% of students either received an A, reviewed, or both.
+
+------------------------------------------------------------------------
+
+#### Part (d) $P(A \cap R)$: Probability of receiving an A and reviewing
+
+-   Directly from the table: $$P(A \cap R) = \frac{14}{50} = 0.28$$
+
+------------------------------------------------------------------------
+
+#### Part (e) $P(A | R)$: Probability of receiving an A given that the student reviewed
+
+-   Use the formula: $$P(A|R) = \frac{P(A \cap R)}{P(R)}$$
+-   Substitute values: $$P(A|R) = \frac{0.28}{0.4} = 0.7$$
+-   **Interpretation**: If a student reviewed, there is a 70% chance they received an A.
+
+------------------------------------------------------------------------
+
+#### Part (f) $P(A' | R)$: Probability of not receiving an A given that the student reviewed
+
+-   Use the complement rule: $$P(A'|R) = 1 - P(A|R)$$
+-   Substitute values: $$P(A'|R) = 1 - 0.7 = 0.3$$
+-   **Interpretation**: If a student reviewed, there is a 30% chance they did not receive an A.
+
+------------------------------------------------------------------------
+
+### Conditional Probability Rules
+
+#### Multiplication Rule for Two Events
+
+-   **Formula**: $$P(A \cap B) = P(A|B) \times P(B) = P(B|A) \times P(A)$$
+-   **Interpretation**:
+    -   The probability of both $A$ and $B$ occurring is the probability of $A$ occurring given $B$ times the probability of $B$, or vice versa.
+
+------------------------------------------------------------------------
+
+#### Multiplication Rule for Three Events
+
+-   **Formula**: $$P(A_1 \cap A_2 \cap A_3) = P(A_3 | A_1 \cap A_2) \times P(A_2 | A_1) \times P(A_1)$$
+-   **Interpretation**:
+    -   The probability of all three events occurring is the product of the conditional probabilities at each step.
+
+## SECTION 2.4 INDEPENDENCE
+
+#### Definition of Independent Events
+
+Two events $A$ and $B$ are said to be **independent** if the occurrence of one event does not affect the occurrence of the other. In other words: - **If** $A$ occurs, it does not change the probability of $B$. - **If** $B$ occurs, it does not change the probability of $A$.
+
+------------------------------------------------------------------------
+
+#### Mathematical Conditions for Independence
+
+1.  **Conditional Probability Definition**:
+    -   Two events $A$ and $B$ are independent if: $$P(A|B) = P(A)$$ or $$P(B|A) = P(B)$$
+    -   **Explanation**: Knowing that $B$ happened does not change the probability of $A$.
+2.  **Multiplication Rule for Independent Events**:
+    -   $A$ and $B$ are independent if: $$P(A \cap B) = P(A) \times P(B)$$
+    -   **Explanation**: The probability of both events occurring is simply the product of their individual probabilities when the events are independent.
+
+------------------------------------------------------------------------
+
+### Example: Marble Jar Problem
+
+A jar contains: - 3 red marbles - 5 green marbles - 2 blue marbles - 6 yellow marbles
+
+The total number of marbles is: $$3 + 5 + 2 + 6 = 16$$
+
+------------------------------------------------------------------------
+
+#### Part 1: Probability of Drawing a Green Marble and then a Yellow Marble (with Replacement)
+
+-   **Step 1: Probability of drawing a green marble**: $$P(G) = \frac{5}{16}$$
+
+-   **Step 2: Probability of drawing a yellow marble (after replacing the first marble)**: $$P(Y) = \frac{6}{16}$$
+
+-   **Since the first marble is replaced**, the second draw is **independent** of the first draw.
+
+-   **Combined Probability**: $$P(G \cap Y) = P(G) \times P(Y) = \frac{5}{16} \times \frac{6}{16} = \frac{30}{256} = \frac{15}{128}$$
+
+**Interpretation**: The probability of drawing a green marble and then a yellow marble is $15/128$ when the first marble is replaced because the draws are independent.
+
+------------------------------------------------------------------------
+
+#### Part 2: What Happens if the Marble is Not Replaced?
+
+-   **If the first marble is not replaced**, the sample space changes for the second draw, making the two events **dependent**.
+
+-   **Step 1: Probability of drawing a green marble first**: $$P(G) = \frac{5}{16}$$
+
+-   **Step 2: Probability of drawing a yellow marble second (without replacement)**:
+
+    -   After drawing a green marble, there are now 15 marbles left. $$P(Y|G) = \frac{6}{15}$$
+
+-   **Combined Probability (dependent events)**: $$P(G \cap Y) = P(G) \times P(Y|G) = \frac{5}{16} \times \frac{6}{15} = \frac{30}{240} = \frac{1}{8}$$
+
+**Interpretation**: When the first marble is not replaced, the probability changes because the two draws are now **dependent** on each other. The probability of getting a green marble followed by a yellow marble is $1/8$.
+
+------------------------------------------------------------------------
+
+### Key Differences Between Independent and Dependent Events
+
+-   **Independent Events**:
+    -   One event does not affect the probability of another.
+    -   Example: Tossing a coin and rolling a die are independent.
+    -   Formula: $P(A \cap B) = P(A) \times P(B)$
+-   **Dependent Events**:
+    -   The outcome of one event affects the probability of another.
+    -   Example: Drawing two marbles without replacement.
+    -   Formula: $P(A \cap B) = P(A) \times P(B|A)$
+
+------------------------------------------------------------------------
+
+### Why Does Replacement Matter?
+
+-   **With Replacement**:
+    -   The sample space remains the same.
+    -   Events are independent.
+-   **Without Replacement**:
+    -   The sample space reduces after each draw.
+    -   Events become dependent.
+
+------------------------------------------------------------------------
