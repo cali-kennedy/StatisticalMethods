@@ -310,7 +310,7 @@ Do the following:
 
 1.  Draw a number line and mark the location of the bins. For discrete data, center the bins on the corresponding value.
 
-2.   For each class, draw a bar extending from the number line to either the frequency or relative frequency of the number/bin. Do this for each bin
+2.  For each class, draw a bar extending from the number line to either the frequency or relative frequency of the number/bin. Do this for each bin
 
 #### Example: Histogram shower-flow rate data
 
@@ -327,6 +327,8 @@ rate_df %>%
 <hr style="border: 2px solid pink;">
 
 #### Example: Violin Plot
+
+a compact display of a continuous distribution. It is a blend of boxplot and density plot: a violin plot is a mirrored density plot displayed in the same way as a boxplot.
 
 ```{r}
 rate_df %>%
@@ -402,25 +404,9 @@ rate_v %>% mean()
 
 <hr style="border: 2px solid pink;">
 
-### Trimmed Mean
-
-$\bar{x}_{tr(10)}$
-
-alpha = 10/100 = 0.1
-
-```{r}
-#Trimmed mean - array
-rate_v %>% mean(trim = 0.1)
-  
-
-#Trimmed mean - dataframe
-rate_df %>%
-  summarise(trim_mean_10 = mean(Rate, trim = 0.1))
-```
-
-<hr style="border: 2px solid pink;">
-
 ### Mode
+
+most frequent observation of the variable that occurs in the data set.
 
 ```{r}
 # Mode - Use dataframe
@@ -471,6 +457,8 @@ rate_v %>%
 
 ### Five-Number-Summary
 
+The five-number summary of a set of data consists of the smallest data value, Q1, the median, Q3, and the largest data value.
+
 ```{r}
 # Five Number summary
 
@@ -496,6 +484,8 @@ rate_v %>% max()
 
 ### Box-Plot
 
+A boxplot is the graphical representation of five number summary.
+
 ```{r}
 # Boxplot - dataframe
 rate_df %>%
@@ -510,3 +500,165 @@ ggplot(mapping = aes(x = rate_v)) +
 Boxplot suggests one outlier and that the shape of the distribution of shower rate
 
 <hr style="border: 2px solid pink;">
+
+### Sensitivity
+
+-   The **sample mean** is **sensitive** to outliers; that is, outliers in the dataset can have a **profound** **effect** on the sample mean.
+
+-   On the other hand, the **sample median** is **insensitive** to outliers, since outliers **does not substantially affect** the sample median
+
+-   **For skewed data:** median is preferred to represent data
+
+-   **For symmetric data:** the mean is preferred to represent data
+
+-   **Compromise between means senstivity and medians insensitivity:** trimmed mean
+
+### Trimmed Mean
+
+$\bar{x}_{tr(10)}$
+
+alpha = 10/100 = 0.1
+
+`{r} #Trimmed mean - array rate_v %>% mean(trim = 0.1)     #Trimmed mean - dataframe rate_df %>%   summarise(trim_mean_10 = mean(Rate, trim = 0.1))}`
+
+<hr style="border: 2px solid pink;">
+
+## SECTION 1.3: MEASURES OF VARIABILITY
+
+### Overview: range, sample variance, IQR
+
+### Measure of Spread
+
+#### **1. Range**:
+
+-   **Formula**: R=Largest Data Value−Smallest Data Value
+
+-   **What it tells you**:\
+    The **range** measures the **spread** of the data by looking at the difference between the highest and lowest values.
+
+-   **Example**:\
+    If the dataset is `[5, 8, 12, 15, 20]`,
+
+    -   Largest value = 20
+
+    -   Smallest value = 5
+
+    -   **Range** = 20 - 5 = 15
+
+#### **2. Standard Deviation**:
+
+-   **Definition**:\
+    The **standard deviation** measures how far each data point is from the **mean** on average. It tells you how **spread out** the data is.
+
+-   **Symbols**:
+
+    -   **σ (sigma)**: Population standard deviation.
+
+    -   **s**: Sample standard deviation.
+
+-   **Formula for population (σ)**:
+
+    \$\$\\sigma = \\sqrt{\\frac{\\sum (x - \\mu)\^2}{N}}\$\$
+
+-   **Formula for sample (s)**:
+
+\$\$s = \\sqrt{\\frac{\\sum (x - \\bar{x})\^2}{n-1}}\$\$
+
+-   **What it means**:
+
+    -   A **small standard deviation** means data points are **close to the mean**.
+
+    -   A **large standard deviation** means data points are **spread out** over a wide range.
+
+-   **Example**: For data `[4, 8, 6, 5, 9]` with a mean of `6.4`,\
+    the deviations from the mean are squared and averaged, resulting in `s ≈ 1.85`.
+
+#### **3. Variance**:
+
+-   **Definition**:\
+    The **variance** is simply the **square of the standard deviation**.
+
+-   **Symbols**:
+
+    -   **σ²**: Population variance.
+
+    -   **s²**: Sample variance.
+
+-   **Formula**:
+
+    -   **Population variance**:
+
+    \$\$\\sigma\^2 = \\frac{\\sum (x - \\mu)\^2}{N}\$\$
+
+    -   **Sample variance**:
+
+    \$\$s\^2 = \\frac{\\sum (x - \\bar{x})\^2}{n-1}\$\$
+
+-   **What it means**:\
+    Variance measures the **average squared deviation** from the mean. It's useful because squaring emphasizes larger deviations.
+
+-   **Example**:\
+    If the standard deviation is `4`, then the **variance** is `4² = 16`.
+
+### **Summary**:
+
+-   **Range**: Quick measure of spread.
+
+-   **Standard Deviation**: Average distance from the mean.
+
+-   **Variance**: Square of the standard deviation, showing how spread out the data is.
+
+### IQR
+
+-   The interquartile range, IQR, is the range of the middle 50% of the observations in a data set. That is, the IQR is the difference between the third and first quartiles and is found using the formula:
+
+\$\$\\\\text{IQR} = Q_3 - Q_1\$\$
+
+Where:
+- \$Q_1\$ = First quartile (25th percentile)
+- \$Q_3\$ = Third quartile (75th percentile)
+
+### Example: Measures of Variability
+
+The accompanying data set consists of observations on shower-flow rate (L/min) for a sample of n = 129 houses in Perth, Australia (“An Application of Bayes Methodology to the Analysis of Diary Records in a Water Use Study,” J. Amer. Stat. Assoc., 1987: 705–711)
+
+Calculate the following: a) Range, standard deviation, variance, IQR
+
+```{r}
+# Range
+rate_v %>% max() - rate_v %>% min()
+
+
+# Standard Deviation - array
+rate_v %>% sd()
+
+# Standard Deviation - dataframe
+rate_df %>%
+  summarise(std_dev = sd(Rate))
+
+
+# Variance - array
+rate_v %>% var()
+
+# Variance - dataframe
+rate_df %>%
+  summarise(variance = var(Rate))
+
+
+# IQR: Interquartile Range
+rate_v %>% IQR()
+```
+
+# CHAP 2
+
+## SECTION 2.1: SAMPLE SPACES AND EVENTS
+
+### Overview: Sample spaces and events, axioms, interpretations, properties of probability, counting techniques, conditional probability, independence
+
+SECTION 2.2 AXIOMS, INTERPRETATIONS, AND PROPERTIES OF PROBABILITY
+
+SECTION 2.3 COUNTIN TECHNIQUES
+
+SECTOIN 2.4 CONDITIONAL PROBABILITY
+
+SECTION 2.4 INDEPENDENCE

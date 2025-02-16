@@ -13,7 +13,7 @@
 
 <meta name="date" content="2025-02-16" />
 
-<title>Test1_Study_Guide</title>
+<title>Statistical Methods Exam 1 Study Guide</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,7 +350,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Test1_Study_Guide</h1>
+<h1 class="title toc-ignore">Statistical Methods Exam 1 Study Guide</h1>
 <h4 class="author">Cali Kennedy</h4>
 <h4 class="date">2025-02-16</h4>
 
@@ -839,6 +839,9 @@ rate_df %&gt;%
 </div>
 <div id="example-violin-plot" class="section level4">
 <h4>Example: Violin Plot</h4>
+<p>a compact display of a continuous distribution. It is a blend of
+boxplot and density plot: a violin plot is a mirrored density plot
+displayed in the same way as a boxplot.</p>
 <pre class="r"><code>rate_df %&gt;%
   ggplot(mapping = aes(x = Rate, y = 0)) +
   geom_violin(color = &quot;black&quot;, fill = &quot;blue&quot;)</code></pre>
@@ -936,24 +939,10 @@ rate_v %&gt;% mean()</code></pre>
 <pre><code>## [1] 7.707752</code></pre>
 <hr style="border: 2px solid pink;">
 </div>
-<div id="trimmed-mean" class="section level3">
-<h3>Trimmed Mean</h3>
-<p><span class="math inline">\(\bar{x}_{tr(10)}\)</span></p>
-<p>alpha = 10/100 = 0.1</p>
-<pre class="r"><code>#Trimmed mean - array
-rate_v %&gt;% mean(trim = 0.1)</code></pre>
-<pre><code>## [1] 7.458095</code></pre>
-<pre class="r"><code>#Trimmed mean - dataframe
-rate_df %&gt;%
-  summarise(trim_mean_10 = mean(Rate, trim = 0.1))</code></pre>
-<pre><code>## # A tibble: 1 × 1
-##   trim_mean_10
-##          &lt;dbl&gt;
-## 1         7.46</code></pre>
-<hr style="border: 2px solid pink;">
-</div>
 <div id="mode" class="section level3">
 <h3>Mode</h3>
+<p>most frequent observation of the variable that occurs in the data
+set.</p>
 <pre class="r"><code># Mode - Use dataframe
 rate_df %&gt;%
   count(Rate, name = &quot;freq&quot;) %&gt;%
@@ -1028,6 +1017,8 @@ rate_v %&gt;%
 </div>
 <div id="five-number-summary" class="section level3">
 <h3>Five-Number-Summary</h3>
+<p>The five-number summary of a set of data consists of the smallest
+data value, Q1, the median, Q3, and the largest data value.</p>
 <pre class="r"><code># Five Number summary
 
 # Minimum
@@ -1053,6 +1044,7 @@ rate_v %&gt;% max()</code></pre>
 </div>
 <div id="box-plot" class="section level3">
 <h3>Box-Plot</h3>
+<p>A boxplot is the graphical representation of five number summary.</p>
 <pre class="r"><code># Boxplot - dataframe
 rate_df %&gt;%
   ggplot(mapping = aes(x = Rate)) +
@@ -1065,6 +1057,129 @@ ggplot(mapping = aes(x = rate_v)) +
 <p>Boxplot suggests one outlier and that the shape of the distribution
 of shower rate</p>
 <hr style="border: 2px solid pink;">
+</div>
+<div id="sensitivity" class="section level3">
+<h3>Sensitivity</h3>
+<ul>
+<li><p>The <strong>sample mean</strong> is <strong>sensitive</strong> to
+outliers; that is, outliers in the dataset can have a
+<strong>profound</strong> <strong>effect</strong> on the sample
+mean.</p></li>
+<li><p>On the other hand, the <strong>sample median</strong> is
+<strong>insensitive</strong> to outliers, since outliers <strong>does
+not substantially affect</strong> the sample median</p></li>
+<li><p><strong>For skewed data:</strong> median is preferred to
+represent data</p></li>
+<li><p><strong>For symmetric data:</strong> the mean is preferred to
+represent data</p></li>
+<li><p><strong>Compromise between means senstivity and medians
+insensitivity:</strong> trimmed mean</p></li>
+</ul>
+</div>
+<div id="trimmed-mean" class="section level3">
+<h3>Trimmed Mean</h3>
+<p><span class="math inline">\(\bar{x}_{tr(10)}\)</span></p>
+<p>alpha = 10/100 = 0.1</p>
+<p><code>{r} #Trimmed mean - array rate_v %&gt;% mean(trim = 0.1)     #Trimmed mean - dataframe rate_df %&gt;%   summarise(trim_mean_10 = mean(Rate, trim = 0.1))}</code></p>
+<hr style="border: 2px solid pink;">
+</div>
+</div>
+<div id="section-1.3-measures-of-variability" class="section level2">
+<h2>SECTION 1.3: MEASURES OF VARIABILITY</h2>
+<div id="overview-range-sample-variance-iqr" class="section level3">
+<h3>Overview: range, sample variance, IQR</h3>
+</div>
+<div id="measure-of-spread" class="section level3">
+<h3>Measure of Spread</h3>
+</div>
+<div id="range" class="section level3">
+<h3><strong>1. Range</strong>:</h3>
+<ul>
+<li><p><strong>Formula</strong>:
+R=Largest Data Value−Smallest Data Value</p></li>
+<li><p><strong>What it tells you</strong>:<br />
+The <strong>range</strong> measures the <strong>spread</strong> of the
+data by looking at the difference between the highest and lowest
+values.</p></li>
+<li><p><strong>Example</strong>:<br />
+If the dataset is <code>[5, 8, 12, 15, 20]</code>,</p>
+<ul>
+<li><p>Largest value = 20</p></li>
+<li><p>Smallest value = 5</p></li>
+<li><p><strong>Range</strong> = 20 - 5 = 15</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="standard-deviation" class="section level3">
+<h3><strong>2. Standard Deviation</strong>:</h3>
+<ul>
+<li><p><strong>Definition</strong>:<br />
+The <strong>standard deviation</strong> measures how far each data point
+is from the <strong>mean</strong> on average. It tells you how
+<strong>spread out</strong> the data is.</p></li>
+<li><p><strong>Symbols</strong>:</p>
+<ul>
+<li><p><strong>σ (sigma)</strong>: Population standard
+deviation.</p></li>
+<li><p><strong>s</strong>: Sample standard deviation.</p></li>
+</ul></li>
+<li><p><strong>Formula for population (σ)</strong>:</p>
+<p>$$\sigma = \sqrt{\frac{\sum (x - \mu)^2}{N}}$$</p></li>
+<li><p><strong>Formula for sample (s)</strong>:</p></li>
+</ul>
+<p>$$s = \sqrt{\frac{\sum (x - \bar{x})^2}{n-1}}$$</p>
+<ul>
+<li><p><strong>What it means</strong>:</p>
+<ul>
+<li><p>A <strong>small standard deviation</strong> means data points are
+<strong>close to the mean</strong>.</p></li>
+<li><p>A <strong>large standard deviation</strong> means data points are
+<strong>spread out</strong> over a wide range.</p></li>
+</ul></li>
+<li><p><strong>Example</strong>: For data <code>[4, 8, 6, 5, 9]</code>
+with a mean of <code>6.4</code>,<br />
+the deviations from the mean are squared and averaged, resulting in
+<code>s ≈ 1.85</code>.</p></li>
+</ul>
+</div>
+<div id="variance" class="section level3">
+<h3><strong>3. Variance</strong>:</h3>
+<ul>
+<li><p><strong>Definition</strong>:<br />
+The <strong>variance</strong> is simply the <strong>square of the
+standard deviation</strong>.</p></li>
+<li><p><strong>Symbols</strong>:</p>
+<ul>
+<li><p><strong>σ²</strong>: Population variance.</p></li>
+<li><p><strong>s²</strong>: Sample variance.</p></li>
+</ul></li>
+<li><p><strong>Formula</strong>:</p>
+<ul>
+<li><strong>Population variance</strong>:</li>
+</ul>
+<p>$$\sigma^2 = \frac{\sum (x - \mu)^2}{N}$$</p>
+<ul>
+<li><strong>Sample variance</strong>:</li>
+</ul>
+<p>$$s^2 = \frac{\sum (x - \bar{x})^2}{n-1}$$</p></li>
+<li><p><strong>What it means</strong>:<br />
+Variance measures the <strong>average squared deviation</strong> from
+the mean. It’s useful because squaring emphasizes larger
+deviations.</p></li>
+<li><p><strong>Example</strong>:<br />
+If the standard deviation is <code>4</code>, then the
+<strong>variance</strong> is <code>4² = 16</code>.</p></li>
+</ul>
+</div>
+<div id="summary" class="section level3">
+<h3><strong>Summary</strong>:</h3>
+<ul>
+<li><p><strong>Range</strong>: Quick measure of spread.</p></li>
+<li><p><strong>Standard Deviation</strong>: Average distance from the
+mean.</p></li>
+<li><p><strong>Variance</strong>: Square of the standard deviation,
+showing how spread out the data is.</p></li>
+</ul>
 </div>
 </div>
 </div>
